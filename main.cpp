@@ -20,8 +20,20 @@ public:
     string getScreenWriter() const { return m_screenWriter; }
     string getTitle() const { return m_title; }
     int getReleasedYear() const {return m_releasedYear; }
+
+    void print() const {
+        cout << "Movie: " << m_title << '\n'
+             << "\tYear released: " << m_releasedYear << '\n'
+             << "\tScreenwriter: " << m_screenWriter << '\n';
+        cout << '\n';
+    }
 };
 
 int main() {
+    Movie myMovie{};
+    myMovie.setReleasedYear(2005);
+    myMovie.setScreenWriter("Me");
+    myMovie.setTitle("Future");
+    myMovie.print();
     return 0;
 }
