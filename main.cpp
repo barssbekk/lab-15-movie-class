@@ -21,6 +21,7 @@ public:
     string getTitle() const { return m_title; }
     int getReleasedYear() const {return m_releasedYear; }
 
+    // print() outputs Movie title, year, screenWriter
     void print() const {
         cout << "Movie: " << m_title << '\n'
              << "\tYear released: " << m_releasedYear << '\n'
@@ -30,9 +31,10 @@ public:
 };
 
 int main() {
+    // Check if file opens
     ifstream fileInput{"data.txt"};
     if (!fileInput) {
-        cerr << "File not found\n";
+        cerr << "ERROR: File not found\n";
         return 1;
     }
 
@@ -40,6 +42,8 @@ int main() {
     string screenWriterInput{};
     string titleInput{};
     int releasedYearInput{};
+
+    // Input data
     while (getline(fileInput, titleInput)) {
         fileInput >> releasedYearInput;
         fileInput.ignore();
@@ -51,7 +55,10 @@ int main() {
         temp.setScreenWriter(screenWriterInput);
         movieList.push_back(temp);
     }
-    movieList.at(1).print();
+
+    // Outputs the whole movie list
+    for (const auto& myList : movieList)
+        myList.print();
 
     return 0;
 }
