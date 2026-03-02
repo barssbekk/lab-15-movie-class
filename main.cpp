@@ -30,10 +30,19 @@ public:
 };
 
 int main() {
-    Movie myMovie{};
-    myMovie.setReleasedYear(2005);
-    myMovie.setScreenWriter("Me");
-    myMovie.setTitle("Future");
-    myMovie.print();
+    ifstream fileInput{"data.txt"};
+    if (!fileInput) {
+        cerr << "File not found\n";
+        return 1;
+    }
+
+    vector<Movie> movieList{};
+    string screenWriterInput{};
+    string titleInput{};
+    int releasedYearInput{};
+    while (fileInput >> titleInput >> releasedYearInput >> screenWriterInput) {
+        
+    }
+
     return 0;
 }
