@@ -40,7 +40,11 @@ int main() {
     string screenWriterInput{};
     string titleInput{};
     int releasedYearInput{};
-    while (fileInput >> titleInput >> releasedYearInput >> screenWriterInput) {
+    while (getline(fileInput, titleInput)) {
+        fileInput >> releasedYearInput;
+        fileInput.ignore();
+        getline(fileInput, screenWriterInput);
+
         Movie temp{};
         temp.setTitle(titleInput);
         temp.setReleasedYear(releasedYearInput);
